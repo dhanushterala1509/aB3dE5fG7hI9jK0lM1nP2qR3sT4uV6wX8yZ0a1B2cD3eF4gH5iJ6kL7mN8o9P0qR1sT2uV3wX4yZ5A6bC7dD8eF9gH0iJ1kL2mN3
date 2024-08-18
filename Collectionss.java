@@ -5,7 +5,7 @@ interface Collectionss {
 
     void printCollection(Collection<?> obj);
 
-    boolean comparingCollections(Collection<?> obj1,Collection<?> obj2);
+    boolean comparingCollections(Collection<?> obj1,Collection<?> obj);
 
 
     int collectionsize(Collection<?> obj);
