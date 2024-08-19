@@ -8,7 +8,7 @@ interface Collectionss {
     boolean comparingCollections(Collection<?> obj1,Collection<?> obj);
 
 
-    int collectionsize(Collection<?> obj);
+    int collectionsize(Collection<?> oj);
 
     int collectionsizeMap(Map<?,?> obj);
     void iterateMapElements(Map<?, ?> mp);
