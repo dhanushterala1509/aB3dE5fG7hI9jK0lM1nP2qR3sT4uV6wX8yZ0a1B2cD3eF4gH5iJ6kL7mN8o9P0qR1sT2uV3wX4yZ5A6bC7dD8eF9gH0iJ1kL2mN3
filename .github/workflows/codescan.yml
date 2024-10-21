@@ -34,7 +34,7 @@ jobs:
           projectKey: ${{ secrets.CODESCAN_PROJECT_KEY }}
           codeScanUrl: https://vadev.codescan.io
           login: ${{ secrets.CODESCAN_AUTH_TOKEN }}
-          generateSarifFile: true
+          generateSarifFile: false
       - name: Run Codescan On PR
         if: github.event_name == 'pull_request'
         uses: codescan-io/codescan-scanner-action@test-node
