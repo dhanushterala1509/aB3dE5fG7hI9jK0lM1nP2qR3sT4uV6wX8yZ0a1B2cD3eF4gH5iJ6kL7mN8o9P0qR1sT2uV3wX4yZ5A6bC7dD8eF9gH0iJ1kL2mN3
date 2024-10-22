@@ -1,6 +1,6 @@
 name: CI
 env: 
-  SONAR_SCANNER_VERSION: 6.2.1.4610
+  SONAR_SCANNER_VERSION: 5.0.1.3006
 on:
   push:
     branches:
