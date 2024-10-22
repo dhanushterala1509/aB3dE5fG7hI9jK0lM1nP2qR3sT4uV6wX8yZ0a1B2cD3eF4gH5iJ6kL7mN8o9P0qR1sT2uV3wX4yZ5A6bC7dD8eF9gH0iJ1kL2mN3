@@ -46,7 +46,7 @@ jobs:
           projectKey: dhanush-terala-1509
           codeScanUrl: https://appgov.codescan.io
           login: squ_052ff374794698272cc6a4712bb63a86b0fc25ea
-          generateSarifFile: false
+          generateSarifFile: true
           args: |
             sonar.pullrequest.branch=${{github.head_ref}}
             sonar.pullrequest.base=${{github.base_ref}}
