@@ -36,7 +36,7 @@ jobs:
           projectKey: dhanush-terala-1509
           codeScanUrl: https://vadev.codescan.io
           login: squ_70d6458ba67922534e69c7ebc9021ecf82b84e83
-          generateSarifFile: false
+          generateSarifFile: true
       - name: Run Codescan On PR
         if: github.event_name == 'pull_request'
         uses: codescan-io/codescan-scanner-action@test-node
