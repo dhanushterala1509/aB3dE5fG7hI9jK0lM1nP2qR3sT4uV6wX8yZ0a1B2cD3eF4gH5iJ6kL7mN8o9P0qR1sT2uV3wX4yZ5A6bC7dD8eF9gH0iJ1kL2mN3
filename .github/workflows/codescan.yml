@@ -29,7 +29,7 @@ jobs:
             restore-keys: ${{ runner.os }}-sonar
       - name: Run Codescan On Push
         if: github.event_name == 'push'
-        uses: codescan-io/codescan-scanner-action@test-tag
+        uses: dhanushterala1509/codescan-scanner-action@test-tag
         with: 
           scanChangedFilesOnly: false
           organization: dhanush
