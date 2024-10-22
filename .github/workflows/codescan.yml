@@ -1,6 +1,6 @@
 name: CI
-env:  
-    SONAR_SCANNER_VERSION: 5.0.1.3006
+env: 
+  SONAR_SCANNER_VERSION: 5.0.1.3006
 on:
   push:
     branches:
@@ -29,26 +29,35 @@ jobs:
             restore-keys: ${{ runner.os }}-sonar
       - name: Run Codescan On Push
         if: github.event_name == 'push'
-        uses: dhanushterala1509/codescan-scanner-action@test-tag
+        uses: codescan-io/codescan-scanner-action@test-tag
         with: 
-          scanChangedFilesOnly: true
-          organization: ${{ secrets.CODESCAN_ORGANIZATION_KEY }}
-          projectKey: ${{ secrets.CODESCAN_PROJECT_KEY }}
+          scanChangedFilesOnly: false
+          organization: dhanush
+          projectKey: dhanush-terala-1509
           codeScanUrl: https://vadev.codescan.io
-          login: ${{ secrets.CODESCAN_AUTH_TOKEN }}
+          login: squ_70d6458ba67922534e69c7ebc9021ecf82b84e83
           generateSarifFile: false
       - name: Run Codescan On PR
         if: github.event_name == 'pull_request'
         uses: codescan-io/codescan-scanner-action@test-node
         with: 
           scanChangedFilesOnly: true
-          organization: ${{ secrets.CODESCAN_ORGANIZATION_KEY }}
-          projectKey: ${{ secrets.CODESCAN_PROJECT_KEY }}
-          codeScanUrl: https://vadev.codescan.io
-          login: ${{ secrets.CODESCAN_AUTH_TOKEN }}
+          organization: dhanush
+          projectKey: dhanush-terala-1509
+          codeScanUrl: https://appgov.codescan.io
+          login: squ_052ff374794698272cc6a4712bb63a86b0fc25ea
           generateSarifFile: false
           args: |
             sonar.pullrequest.branch=${{github.head_ref}}
             sonar.pullrequest.base=${{github.base_ref}}
             sonar.pullrequest.key=${{github.event.number}}
       
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: codescan.sarif
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v4
+        with:
+          name: codescan.sarif
+          path: codescan.sarif 
