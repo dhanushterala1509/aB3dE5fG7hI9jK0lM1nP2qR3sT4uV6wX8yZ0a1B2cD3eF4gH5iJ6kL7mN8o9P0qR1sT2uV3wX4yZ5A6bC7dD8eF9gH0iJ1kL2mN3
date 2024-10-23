@@ -33,9 +33,9 @@ jobs:
         with: 
           scanChangedFilesOnly: false
           organization: dhanush
-          projectKey: dhanush-terala-1508
-          codeScanUrl: https://a66a-103-152-184-80.ngrok-free.app
-          login: squ_c79abf29fa000e380cb54aae7cdf322eb628e0d3
+          projectKey: dhanushterala1508
+          codeScanUrl: https://preview.codescan.io
+          login: squ_28ec833ea09fac2ed345ea2d65c28bf5b3d04579
           generateSarifFile: true
       - name: Run Codescan On PR
         if: github.event_name == 'pull_request'
