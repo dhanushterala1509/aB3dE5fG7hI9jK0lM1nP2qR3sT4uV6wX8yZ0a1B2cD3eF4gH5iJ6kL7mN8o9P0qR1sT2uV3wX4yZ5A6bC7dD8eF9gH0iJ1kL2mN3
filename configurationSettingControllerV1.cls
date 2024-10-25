@@ -1,6 +1,6 @@
 public with sharing class configurationSettingControllerV1 {
 
-    List<sObject> lstfiscalsetting;
+    List<Apple> lstfiscalsetting;
 
     public configurationSettingControllerV1(){
 
