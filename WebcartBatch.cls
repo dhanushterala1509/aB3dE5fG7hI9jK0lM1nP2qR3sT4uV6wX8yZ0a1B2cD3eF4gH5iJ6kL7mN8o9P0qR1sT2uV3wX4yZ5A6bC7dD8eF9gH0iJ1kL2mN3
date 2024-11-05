@@ -27,6 +27,20 @@ class WebcartBatch {
 
         }
 
+        public void falseNegative1() {
+            String name = '\'DEV\' OR Name LIKE \'INT%\''; // includes SOQL injection
+
+            String baseQuery = 'SELECT Id, Name FROM copado__Environment__c  WHERE Name = ';
+            String safeName = '\''+String.escapeSingleQuotes(name)+'\'';
+            String safeQuery = baseQuery+safeName;  // This protects against SOQL injection
+            System.debug('selectByName2: safeQuery='+safeQuery);
+            List<copado__Environment__c> records3 = Database.query(safeQuery); // CORRECT - this is safe
+            List<copado__Environment__c> records3a = Database.query(baseQuery+name); // FALSE NEGATIVE
+            System.debug('selectByName2: records3='+records3.size());
+            System.debug('selectByName2: records3a='+records3a.size());
+
+        }
+
          // Dynamic query with FFLIB - FALSE POSITIVE FOR SOQL INJECTION
         public List<copado__Environment__c> selectByName2() {
             // String name= 'Derek';
